@@ -11,22 +11,32 @@
 <body class="container">
     <header>
         <h1>Foglalás</h1>
+        <hr>
     </header>
     <main>
         <div class="container">
-            <form class="form-group">
+            <form class="form-group" action="/megadas" method="post">
                 <label for="nev">Név:</label><br>
                 <input type="text" name="nev" value="<%=data.nev%>"><br>
                 <label for="email">Email:</label><br>
-                <input type="email" name="email" value="<%=data.email%>"><br>
+                <input type="string" name="email" value="<%=data.email%>"><br>
                 <label for="datum">Dátum:</label><br>
-                <input type="date" name="datum" value="<%=data.datum%>"><br>
+                <input type="date" name="datum" value="<%=data.datum%>" min="2024-10-14"><br>
                 <label for="idopont">Időpont:</label><br>
                 <input type="time" name="idopont" value="<%=data.idopont%>"><br>
                 <label for="nezok">Nézők száma:</label><br>
-                <input type="number" name="nezok" value="<%=data.nezok%>"><br>
-                <input type="submit">
+                <input type="number" name="nezok" value="<%=data.nezok%>" min="1" max="10"><br>
+                <p></p>
+                <input type="submit" value="Foglalás" class="btn btn-primary">
             </form>
+        </div>
+        <hr>
+        <div>
+            <ul>
+                <%{errors.forEach(element => {%>
+                    <li class="alert alert-danger" role="alert"><%=element%></li>
+                <%}); }%>
+            </ul>
         </div>
     </main>
 </body>
